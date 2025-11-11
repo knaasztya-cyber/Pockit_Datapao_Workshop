@@ -1,0 +1,14 @@
+bundle:
+  name: pockit_bundle
+
+resources:
+  apps:
+    pockit-app:
+      name: 'mywalletspickpocket'
+      description: 'The user interface to my personal finance tracker app MyWalletsPickPocket'
+      source_code_path: ./app
+      resources:
+        - name: 'sql-warehouse'
+          sql_warehouse:
+            id: '4e52cc882dbf952c'
+            permission: 'CAN_USE'
