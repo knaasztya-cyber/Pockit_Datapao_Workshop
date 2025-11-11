@@ -22,20 +22,11 @@ st.set_page_config(layout="wide")
 
 @st.cache_data(ttl=30)  # only re-query if it's been 30 seconds
 def getData():
-    # This example query depends on the nyctaxi data set in Unity Catalog, see https://docs.databricks.com/en/discover/databricks-datasets.html for details
-    return sqlQuery("select * from samples.nyctaxi.trips limit 5000")
+    # This example query depends on the nyctaxi/transaction data set in Unity Catalog, see https://docs.databricks.com/en/discover/databricks-datasets.html for details
+    return sqlQuery("select * from workspace.pockit.transactions limit 5000")
 
 data = getData()
 
-st.header("Taxi fare distribution !!! :)")
-col1, col2 = st.columns([3, 1])
-with col1:
-    st.scatter_chart(data=data, height=400, width=700, y="fare_amount", x="trip_distance")
-with col2:
-    st.subheader("Predict fare")
-    pickup = st.text_input("From (zipcode)", value="10003")
-    dropoff = st.text_input("To (zipcode)", value="11238")
-    d = data[(data['pickup_zip'] == int(pickup)) & (data['dropoff_zip'] == int(dropoff))]
-    st.write(f"# **${d['fare_amount'].mean() if len(d) > 0 else 99:.2f}**")
+st.header("Pockit data")
 
 st.dataframe(data=data, height=600, use_container_width=True)
