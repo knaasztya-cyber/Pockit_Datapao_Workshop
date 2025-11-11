@@ -3,6 +3,7 @@ from databricks import sql
 from databricks.sdk.core import Config
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 # Ensure environment variable is set correctly
 assert os.getenv('DATABRICKS_WAREHOUSE_ID'), "DATABRICKS_WAREHOUSE_ID must be set in app.yaml."
@@ -19,6 +20,10 @@ def sqlQuery(query: str) -> pd.DataFrame:
             return cursor.fetchall_arrow().to_pandas()
 
 st.set_page_config(layout="wide")
+
+# Add Pockit logo at the top
+logo = Image.open("pockit_logo_full.png")
+st.image(logo, width=300)
 
 @st.cache_data(ttl=30)  # only re-query if it's been 30 seconds
 def getData():
