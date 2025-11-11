@@ -4,7 +4,7 @@ bundle:
 resources:
   apps:
     pockit-app:
-      name: 'mywalletspickpocket'
+      name: 'pockit'
       description: 'The user interface to my personal finance tracker app MyWalletsPickPocket'
       source_code_path: ./app
       resources:
