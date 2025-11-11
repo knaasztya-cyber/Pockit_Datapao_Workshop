@@ -10,5 +10,5 @@ resources:
       resources:
         - name: 'sql-warehouse'
           sql_warehouse:
-            id: '4e52cc882dbf952c'
+            id: 'dccf724327e019dc'
             permission: 'CAN_USE'
